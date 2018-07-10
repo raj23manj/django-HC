@@ -2,7 +2,29 @@
 
 {% block content %}
 
-Home!
+{% for product in products.all %}
+<div class="row">
+  <div class="col-2">
+    <img src="{{ product.image.url }}" class="img-fliud" height="200px" width="200px">
+  </div>
+  <div class="col-6">
+    <h1>
+      {{ product.title }}
+    </h1>
+    <p>
+      {{ product.summary }}
+    </p>
+  </div>
+  <div class="col-4">
+    <a href="javascript: {document.getElementById('upvote').submit()}" >
+      <button class="btn btn-primary btn-lg btn-block">
+        <span class="oi oi-thumb-up"></span>
+        Upvote {{ product.votes_total }}
+      </button>
+    </a>
+  </div>
+</div>
+{% endfor %}
 
 {% endblock %}
 
